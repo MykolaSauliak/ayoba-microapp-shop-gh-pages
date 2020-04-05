@@ -3,6 +3,7 @@
 pages:
   stage: deploy
   script:
+    - expo build:web
     - mkdir .public
     - cp -r web-build .public
     - mv .public public
