@@ -4,21 +4,21 @@
   "dir": "auto",
   "display": "standalone",
   "lang": "en",
-  "name": "blockchainDoctor",
+  "name": "ayoba_fashion_microapp",
   "orientation": "portrait",
   "prefer_related_applications": true,
   "related_applications": [
     {
       "platform": "itunes",
-      "id": "com.kailuas.whenSomethingBadHappenWithMe"
+      "id": "com.kailuas.ayoba_fashion_microapp"
     },
     {
       "platform": "play",
-      "url": "http://play.google.com/store/apps/details?id=com.kailuas.whenSomethingBadHappenWithMe",
-      "id": "com.kailuas.whenSomethingBadHappenWithMe"
+      "url": "http://play.google.com/store/apps/details?id=com.kailuas.ayoba_fashion_microapp",
+      "id": "com.kailuas.ayoba_fashion_microapp"
     }
   ],
-  "short_name": "blockchainDoctor",
+  "short_name": "ayoba_fashion_microapp",
   "start_url": ".",
   "theme_color": "#4630EB",
   "icons": [

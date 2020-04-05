@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "blockchainDoctor",
-    "slug": "blockchain_doctor",
+    "name": "ayoba_fashion_microapp",
+    "slug": "ayoba_fashion_microapp",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -24,15 +24,12 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.kailuas.whenSomethingBadHappenWithMe",
+      "bundleIdentifier": "com.kailuas.ayoba_fashion_microapp",
       "supportsTablet": true
     },
     "android": {
       "versionCode" : 2,
-      "package": "com.kailuas.whenSomethingBadHappenWithMe",
-      "config": {
-          "googleMaps": { "apiKey": "AIzaSyCex36k9h-uUuMK9UcD0B8LHrxCmEktaBA" }   
-      },
+      "package": "com.kailuas.ayoba_fashion_microapp",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION",
