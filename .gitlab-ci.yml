@@ -4,7 +4,7 @@ pages:
   stage: deploy
   script:
     - mkdir .public
-    - cp -r web-build .public
+    - cp -r ./web-build .public
     - mv .public public
   artifacts:
     paths:
