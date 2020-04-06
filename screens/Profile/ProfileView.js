@@ -19,6 +19,8 @@ import ShippingCartIcon from '../../containers/ShippingCartIcon';
 import AvatarUpload from '../../containers/AvatarUpload';
 // import { set } from 'ramda';
 
+let companyName = 'Vestiaire Collective'
+
 const S = StyleSheet.create({
   text: {
     fontSize: 16,
@@ -159,7 +161,8 @@ const ProfileView = ({
   );
   //console.log('email',email)
   //console.log('user',user)
-  const isSignedIn = email && email.length > 0;
+  const isSignedIn = uid && uid.length > 0 ? true : false;
+  alert('isSignedIn',isSignedIn)
   const activeColorStyle = {color: !isSignedIn ? colors.gray : 'black'};
   const activeColor = {color: colors.black};
   return (
@@ -222,11 +225,12 @@ const ProfileView = ({
               containerStyle={{backgroundColor: colors.gray}}
               // leftIcon={{...activeColorStyle, name : "truck-delivery", type: "material-community"}}
               titleStyle={[activeColor, S.title]}
-              title={i18n.t('profile.myvestiaire')}
+              // title={i18n.t('profile.myvestiaire')}
+              title={'My items'}
               bottomDivider
             />
             <ListItem
-              disabled={!isSignedIn}
+              //disabled={!isSignedIn}
               // leftIcon={{
               //   ...activeColorStyle,
               //   name: 'truck-delivery',
@@ -240,7 +244,7 @@ const ProfileView = ({
               chevron
             />
             <ListItem
-              disabled={!isSignedIn}
+              //disabled={!isSignedIn}
               // leftIcon={{
               //   ...activeColorStyle,
               //   name: 'truck-delivery',
@@ -254,7 +258,7 @@ const ProfileView = ({
               chevron
             />
             <ListItem
-              disabled={!isSignedIn}
+              //disabled={!isSignedIn}
               // leftIcon={{
               //   ...activeColorStyle,
               //   name: 'truck-delivery',
@@ -275,7 +279,7 @@ const ProfileView = ({
               bottomDivider
             />
             <ListItem
-              disabled={!isSignedIn}
+              //disabled={!isSignedIn}
               // leftIcon={{
               //   ...activeColorStyle,
               //   name: 'bookmark',
@@ -289,7 +293,7 @@ const ProfileView = ({
               chevron
             />
             <ListItem
-              disabled={!isSignedIn}
+              //disabled={!isSignedIn}
               // leftIcon={{
               //   ...activeColorStyle,
               //   name: 'heart',
@@ -303,7 +307,7 @@ const ProfileView = ({
               chevron
             />
             <ListItem
-              disabled={!isSignedIn}
+              //disabled={!isSignedIn}
               // leftIcon={{
               //   ...activeColorStyle,
               //   name: 'heart',
@@ -325,8 +329,8 @@ const ProfileView = ({
               bottomDivider
               />
             <ListItem
-              // disabled={!isSignedIn}
-              // disabled={true}
+              // //disabled={!isSignedIn}
+              // //disabled={true}
               // leftIcon={{...activeColorStyle, name: 'place', type: 'material'}}
               onPress={toDetails}
               titleStyle={activeColorStyle}
@@ -336,7 +340,7 @@ const ProfileView = ({
               chevron
               />
             <ListItem
-              // disabled={!isSignedIn}
+              // //disabled={!isSignedIn}
               // disabled={true}
               // leftIcon={{...activeColorStyle, name: 'place', type: 'material'}}
               onPress={toAddresses}
@@ -399,7 +403,7 @@ const ProfileView = ({
             <ListItem
               containerStyle={{backgroundColor: null}}
               title={
-                'Vestiaire Collective has no association and/or affiliation with the brands whose product are offered for sale on its App.\nThe  authentication of said products is performed independently by Vestiaire Collective'
+                `${companyName} has no association and/or affiliation with the brands whose product are offered for sale on its App.\nThe  authentication of said products is performed independently by ${companyName}`
               }
               titleStyle={{opacity: 0.5, fontSize: 12}}
             />

@@ -15,7 +15,7 @@ export default createStackNavigator(
   },
   {
     initialRouteKey: screens.HomeScreen,
-    headerMode: 'screen',
+    // headerMode: 'screen',
     defaultNavigationOptions,
     navigationOptions: {
       tabBarIcon: ({focused, tintColor}) => {

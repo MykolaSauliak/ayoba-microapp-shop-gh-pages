@@ -235,19 +235,6 @@ const ProductInfoView = ({
 
   const _renderBottomBtns = () => (
     <View style={styles.btnRow}>
-      {/* {isInWishlist({id}) == true ? (
-        <TouchableOpacity
-          onPress={() => fromWishlist(id)}
-          style={styles.wishlistBtn}>
-          <AntDesign name="star" size={20} color="black" />
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity
-          onPress={() => toWishlist(item)}
-          style={styles.wishlistBtn}>
-          <AntDesign name="staro" size={20} />
-        </TouchableOpacity>
-      )} */}
       <TouchableOpacity
         disabled={!isSignedIn}
         onPress={toNegotiation}

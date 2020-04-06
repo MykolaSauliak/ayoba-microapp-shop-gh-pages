@@ -41,21 +41,6 @@ const CartStack = createStackNavigator({
     initialRouteKey: screens.Cart,
     headerMode: 'screen',
     defaultNavigationOptions,
-    navigationOptions: {
-      tabBarIcon: ({focused, tintColor}) => {
-        const iconName = focused ? 'home' : 'home-outline';
-        return (
-          <Ionicons
-            name={iconName}
-            size={25}
-            color={tintColor}
-          />
-        );
-      },
-      // title: i18n.t('tabs.home'),
-      title: "Buy",
-      header: null,
-    }
   }
 );
 

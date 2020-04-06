@@ -87,7 +87,7 @@ const SelectSellMainView = ({
   const complete = () => {
     return (
       informationComplete() &&
-      photosComplete() &&
+      // photosComplete() &&
       descriptionComplete() &&
       conditionComplete() &&
       sellerComplete()

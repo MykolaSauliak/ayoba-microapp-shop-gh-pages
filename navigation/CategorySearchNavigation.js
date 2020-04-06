@@ -7,6 +7,8 @@ import colors from '../constants/colors';
 import WomanSearch from '../screens/Search/CategorySearch/WomanSearch';
 import LifestyleSearch from '../screens/Search/CategorySearch/LifestyleSearch';
 import ManSearch from '../screens/Search/CategorySearch/ManSearch';
+import {Ionicons} from '@expo/vector-icons'
+import {defaultNavigationOptions} from './NavigationOptions';
 
 const SearchTabs = createMaterialTopTabNavigator(
     {
@@ -70,5 +72,24 @@ export default createStackNavigator({
         }),
     }
     
-});
+},
+  {
+    defaultNavigationOptions,
+    navigationOptions: {
+      tabBarIcon: ({focused, tintColor}) => {
+        const iconName = 'ios-search';
+        return (
+          <Ionicons
+            name={iconName}
+            size={25}
+            color={tintColor}
+          />
+        );
+      },
+      // title: i18n.t('tabs.home'),
+      title: "Buy",
+      header: null,
+    }
+  }
+);
 

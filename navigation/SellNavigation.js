@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from 'react-navigation-stack';
 import screens from '../constants/screens';
 import {defaultNavigationOptions} from './NavigationOptions';
-
+import {AntDesign} from '@expo/vector-icons'
 import Sell from '../screens/Sell';
 import SelectSellCategory from '../screens/Sell/components/SelectSellCategory';
 import SelectSellType from '../screens/Sell/components/SelectSellType';
@@ -50,6 +50,14 @@ const SellNavigation = createStackNavigator(
   {
     defaultNavigationOptions: {
       header: null,
+    },
+    navigationOptions: {
+      tabBarIcon: ({focused, tintColor}) => {
+        const iconName = focused ? 'pluscircle' : 'pluscircleo';
+        return <AntDesign name={iconName} size={25} color={tintColor} />;
+      },
+      title: 'Sell',
+      // title: i18n.t('tabs.buy'),
     },
   },
 );

@@ -66,15 +66,16 @@ const Notifications = ({
                     rightComponent={<ShippingCartIcon />}
                     // rightComponent={{ icon: 'settings',size: 35, color: '#000', onPress : () => NavigationService.navigateToNotificationsSettings()}}
                     />
-                    <TouchableOpacity style={{padding: 10}} onPress={removeAllNotification}>
+                    {/* <TouchableOpacity style={{padding: 10}} onPress={removeAllNotification}>
                         <Text>remove all</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                     {
-                        !hasPermission
-                        ?<TouchableOpacity onPress={requestPermission}>
-                            <Text style={{}}>Предоставьте разрешение получать уведомления</Text>
-                        </TouchableOpacity>
-                        :<FlatList 
+                        // !hasPermission
+                        // ?<TouchableOpacity onPress={requestPermission}>
+                        //     <Text style={{}}>Предоставьте разрешение получать уведомления</Text>
+                        // </TouchableOpacity>
+                        // :
+                        <FlatList 
                             data={notifications}
                             renderItem={({item, index}) => <ListItem 
                                                 containerStyle={{minHeight: 100}}

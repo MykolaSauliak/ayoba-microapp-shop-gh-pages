@@ -36,10 +36,11 @@ export default function App(props) {
       <PersistGate loading={null} persistor={persistor}>
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-            <Text>{JSON.stringify(getAyoba())}</Text>
+            {/* <Text>{JSON.stringify(getAyoba())}</Text>
             <Text>globalAyoba {JSON.stringify(global.Ayoba)}</Text>
             <Text>phone {getAyoba()?.getMsisdn()}</Text>
-            <Text>phone from service {Ayoba.getUserPhone()}</Text>
+            <Text>phone from service {Ayoba.getUserPhone()}</Text> */}
+            {/* <div><p>test</p></div> */}
             <AppNavigator 
               ref={(ref) => NavigationService.init(ref)}
               />

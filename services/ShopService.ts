@@ -5,6 +5,7 @@ import R from 'ramda';
 import _ from 'lodash';
 import constants from '../constants'
 import moment from 'moment';
+import Ayoba from './Ayoba';
 
 const collectionsNames = {
   negotiations : "negotiations",
@@ -745,41 +746,44 @@ class ShopService implements ShopServiceInterface {
     // const user = {
     //   uid : '1234'
     // }
-    const user = firebase.auth().currentUser
-    if(!user){
-      return Alert.alert('You must login firstly')
+    // const user = firebase.auth().currentUser
+    // if(!user){
+    //   return Alert.alert('You must login firstly')
+    // }
+    let user = {
+      uid : Ayoba.getUserPhone()
     }
-    let imagesPromises = []
-    for(let i=1;i<6;i++){
-      let photo = options['photo'+i]
-      // console.log('photo',photo)
-      imagesPromises.push(new Promise((resolve) => {
-        try{
-          const storageForDefaultApp = firebase.storage();
-          storageForDefaultApp
-            .ref('images/'+ user.uid + '_' + Date.now())
-            .putFile(photo.path)
-            .then(async file => {
-              // console.log('file',file)
-                let fullPath = file.metadata.fullPath
-                let downloadedURL = await storageForDefaultApp.ref(fullPath).getDownloadURL()
-                // console.log('downloaded link ',downloadedURL)
-                resolve({
-                  title : 'photo'+i,
-                  src : downloadedURL   
-                })
-            }).catch( err => {
-              resolve({name :'photo'+i, url : null})
-            })
-        }catch(err){
-          console.log('ERROR',err)
-        }
+    // let imagesPromises = []
+    // for(let i=1;i<6;i++){
+    //   let photo = options['photo'+i]
+    //   // console.log('photo',photo)
+    //   imagesPromises.push(new Promise((resolve) => {
+    //     try{
+    //       const storageForDefaultApp = firebase.storage();
+    //       storageForDefaultApp
+    //         .ref('images/'+ user.uid + '_' + Date.now())
+    //         .putFile(photo.path)
+    //         .then(async file => {
+    //           // console.log('file',file)
+    //             let fullPath = file.metadata.fullPath
+    //             let downloadedURL = await storageForDefaultApp.ref(fullPath).getDownloadURL()
+    //             // console.log('downloaded link ',downloadedURL)
+    //             resolve({
+    //               title : 'photo'+i,
+    //               src : downloadedURL   
+    //             })
+    //         }).catch( err => {
+    //           resolve({name :'photo'+i, url : null})
+    //         })
+    //     }catch(err){
+    //       console.log('ERROR',err)
+    //     }
 
-      })
-    )
-    }
+    //   })
+    // )
+    // }
 
-    const images : ProductImage[] = await Promise.all(imagesPromises)
+    // const images : ProductImage[] = await Promise.all(imagesPromises)
     try{
       const response = await firebase.firestore().collection('clothes').add({
         ...options,
@@ -788,7 +792,7 @@ class ShopService implements ShopServiceInterface {
         photo3: null,
         photo4: null,
         photo5: null,
-        images,
+        images : [],
         user_id : R.path(['uid'], user),
         createdAt : Date.now(),
         created_time : Date.now(),

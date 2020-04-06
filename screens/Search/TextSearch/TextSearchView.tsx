@@ -276,10 +276,10 @@ class TextSearchView extends Component<Props,State> {
                     <HitsCount />
                     <InfiniteGridHits />
                 </ScrollView>
-                <FilterSortButton  
+                {/* <FilterSortButton  
                   searchState={searchState} 
                   // onPress={() => this.setState(() => ({showFilter: true})) }/>
-                  onPress={() => NavigationService.navigateToFilterSortScreen()}/>
+                  onPress={() => NavigationService.navigateToFilterSortScreen()}/> */}
             </View>
         </View>
     </InstantSearch>

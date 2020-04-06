@@ -11,7 +11,7 @@ class Ayoba {
     init = async (store) =>{
         let AyobaComponent = getAyoba()
         this.ayoba = AyobaComponent
-        alert(JSON.stringify(AyobaComponent))
+        // alert(JSON.stringify(AyobaComponent))
         if (!this.store) {
             this.store = store;
         }
@@ -104,7 +104,7 @@ class Ayoba {
      * @returns String: user’s ISO-3166 country code. Example: AF
      */
     getCountry(){
-        return this.ayoba.getCountry()
+        return this.ayoba  && this.ayoba.getCountry()
     }
 
     getUserPhone(){

@@ -69,7 +69,7 @@ const enhance = compose(
     // },
     openAddItemScreen: ({setSellProduct, navigation}) => () => {
       setSellProduct({});
-      alert('navigate to create new product')
+      // alert('navigate to create new product')
       navigation.navigate(screens.SelectSellCategory);
     },
   }),
