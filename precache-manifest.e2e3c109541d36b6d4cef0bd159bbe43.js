@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/ayoba-microapp-shop-gh-pages/static/media/la.b55ba28d.png"
   },
   {
-    "revision": "9ddf139628c86c3c8be1",
-    "url": "/ayoba-microapp-shop-gh-pages/static/js/app.54bf1418.chunk.js"
+    "revision": "5897c6e1f204b948e86e",
+    "url": "/ayoba-microapp-shop-gh-pages/static/js/app.64ee27e4.chunk.js"
   },
   {
-    "revision": "8e0da1098951a1c6de5df7a80b874803",
-    "url": "/ayoba-microapp-shop-gh-pages/static/js/app.54bf1418.chunk.js.gz"
+    "revision": "ebbd1bb51e40da1220ff052c6d2529a5",
+    "url": "/ayoba-microapp-shop-gh-pages/static/js/app.64ee27e4.chunk.js.gz"
   },
   {
     "revision": "ba6d62f8ac1fb5327ebdbbcde5de7859",
@@ -984,7 +984,7 @@ self.__precacheManifest = [
     "url": "/ayoba-microapp-shop-gh-pages/apple/splash/icon_828x1792.png"
   },
   {
-    "revision": "e72ffa3fb869a8523c10b8097303ad23",
+    "revision": "168c939e68433c90e9eab7c2ec2156ea",
     "url": "/ayoba-microapp-shop-gh-pages/index.html"
   },
   {
