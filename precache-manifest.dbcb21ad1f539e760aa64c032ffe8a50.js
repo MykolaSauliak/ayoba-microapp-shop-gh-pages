@@ -908,16 +908,16 @@ self.__precacheManifest = [
     "url": "/ayoba-microapp-shop-gh-pages/./fonts/SpaceMono-Regular.ttf"
   },
   {
+    "revision": "48c7ed4e7da9792af288a60d7242d615",
+    "url": "/ayoba-microapp-shop-gh-pages/expo-service-worker.js"
+  },
+  {
     "revision": "7a7bc7ead25db795e58b336f04d2624c",
     "url": "/ayoba-microapp-shop-gh-pages/favicon.ico"
   },
   {
     "revision": "d0c694b562b2208635f250762cd7fc79",
     "url": "/ayoba-microapp-shop-gh-pages/serve.json"
-  },
-  {
-    "revision": "48c7ed4e7da9792af288a60d7242d615",
-    "url": "/ayoba-microapp-shop-gh-pages/expo-service-worker.js"
   },
   {
     "revision": "cd10a8b11e8aa0ed49f37b3ac6555285",
