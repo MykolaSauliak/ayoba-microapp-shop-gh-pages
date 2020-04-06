@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/ayoba-microapp-shop-gh-pages/precache-manifest.8adc95f81aa9b1f4855a3093be3d0ee5.js"
+  "/ayoba-microapp-shop-gh-pages/precache-manifest.92161d2a93862070ac43d4d0c262ede1.js"
 );
 
 workbox.skipWaiting();
