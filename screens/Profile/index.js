@@ -12,7 +12,7 @@ import {getCartitems} from '../../features/cart/selectors';
 import {getUser} from '../../features/user/selectors';
 import {setAvatar} from '../../features/user/actions';
 import {AuthService} from '../../services';
-import ImagePicker from 'react-native-image-crop-picker';
+// import ImagePicker from 'react-native-image-crop-picker';
 
 const mapStateToProps = state => ({
   // wishlist: getWishList(state),
@@ -42,15 +42,15 @@ const enhance = compose(
       await AuthService.logout();
     },
     onAvatarPress: ({changeAvatar, setAvatarLoading}) => () => {
-      ImagePicker.openPicker({}).then(async image => {
-        console.log('image', image);
-        setAvatarLoading(true);
-        let newUrl = await AuthService.changeAvatar(image.path);
-        changeAvatar(newUrl);
-        setAvatarLoading(false);
-        // setImages([...images, ...imgs]);
-        // console.log(images);
-      });
+      // ImagePicker.openPicker({}).then(async image => {
+      //   console.log('image', image);
+      //   setAvatarLoading(true);
+      //   let newUrl = await AuthService.changeAvatar(image.path);
+      //   changeAvatar(newUrl);
+      //   setAvatarLoading(false);
+      //   // setImages([...images, ...imgs]);
+      //   // console.log(images);
+      // });
     },
   }),
 );

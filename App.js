@@ -1,15 +1,16 @@
+import React, { useState, useEffect } from 'react';
+import { Platform, StatusBar, StyleSheet, View, YellowBox, Text } from 'react-native';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
-import React, { useState, useEffect } from 'react';
-import { Platform, StatusBar, StyleSheet, View, YellowBox } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AppNavigator from './navigation/AppNavigator';
 import { PersistGate } from 'redux-persist/integration/react'
 import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
 import FirebaseService from './services/FirebaseService'
-import { NavigationService } from './services';
+import { NavigationService, ShopService, Ayoba } from './services';
+import { getAyoba } from './libs/microapp';
 
 FirebaseService.init()
 
@@ -35,6 +36,10 @@ export default function App(props) {
       <PersistGate loading={null} persistor={persistor}>
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            <Text>{JSON.stringify(getAyoba())}</Text>
+            <Text>globalAyoba {JSON.stringify(global.Ayoba)}</Text>
+            <Text>phone {getAyoba()?.getMsisdn()}</Text>
+            <Text>phone from service {Ayoba.getUserPhone()}</Text>
             <AppNavigator 
               ref={(ref) => NavigationService.init(ref)}
               />
@@ -47,6 +52,8 @@ export default function App(props) {
 
 async function loadResourcesAsync() {
   FirebaseService.init()
+  await Ayoba.init(store)
+  ShopService.init(store)
   await Promise.all([
     Asset.loadAsync([
       require('./assets/images/robot-dev.png'),

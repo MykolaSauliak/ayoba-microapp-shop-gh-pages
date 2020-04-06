@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, Text, FlatList, StatusBar, StyleSheet} from 'react-native';
+import {View, Text, FlatList, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Icon} from 'react-native-elements';
 import ProductListItem from '../../components/ProductListItem';
+import ErrorBoundary from '../../components/ErrorBoundary';
 import NotSignedIn from '../../components/NotSignedIn';
 import DraftListItem from '../../components/DraftListItem';
 import {isInWishlist} from '../../features/wishlist/selectors';
 import {isInCart} from '../../features/cart/selectors';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import globalStyles from '../../constants/styles';
 import colors from '../../constants/colors';
 import i18n from '../../i18n';
@@ -45,7 +45,7 @@ const SellView = ({
   markedDelete,
   openAddItemScreen,
 }) => {
-  console.log('isSignedIn', isSignedIn);
+  // console.log('isSignedIn', isSignedIn);
   const _renderHeader = (cart = false) => (
     <View style={S.header}>
       <View
@@ -91,12 +91,12 @@ const SellView = ({
     </View>
   );
 
-  if (!isSignedIn) {
-    return <NotSignedIn onPress={() => NavigationService.navigateToAuth()} />;
-  }
+  // if (!isSignedIn) {
+  //   return <NotSignedIn onPress={() => NavigationService.navigateToAuth()} />;
+  // }
   //console.log('wishlist',wishlist)
   return (
-    <>
+    <ErrorBoundary>
       <View style={{flex: 1}}>
         <View style={{position: 'absolute', right: 15, bottom: 15, zIndex: 2}}>
           <TouchableOpacity onPress={openAddItemScreen}>
@@ -131,7 +131,7 @@ const SellView = ({
           )}
         />
       </View>
-    </>
+    </ErrorBoundary>
   );
 };
 

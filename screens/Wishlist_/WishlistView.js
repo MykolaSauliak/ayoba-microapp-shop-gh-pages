@@ -1,10 +1,9 @@
 import React from 'react';
-import {View, Text, FlatList, StatusBar, StyleSheet} from 'react-native';
+import {TouchableOpacity, View, Text, FlatList, StatusBar, StyleSheet} from 'react-native';
 import {Icon, Header} from 'react-native-elements';
 import ProductListItem from '../../components/ProductListItem';
 import {isInWishlist} from '../../features/wishlist/selectors';
 import {isInCart} from '../../features/cart/selectors';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import globalStyles from '../../constants/styles';
 import colors from '../../constants/colors';
 import i18n from '../../i18n';

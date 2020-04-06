@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/ayoba_microapp_shop/precache-manifest.09518657914e4d50e282a35a7bb861b3.js"
+  "/ayoba-microapp-shop-gh-pages/precache-manifest.92161d2a93862070ac43d4d0c262ede1.js"
 );
 
 workbox.skipWaiting();
@@ -29,7 +29,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("\\ayoba_microapp_shop\\index.html", {
+workbox.routing.registerNavigationRoute("\\ayoba-microapp-shop-gh-pages\\index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

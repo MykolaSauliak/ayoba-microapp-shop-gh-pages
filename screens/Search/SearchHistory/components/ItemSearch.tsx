@@ -1,9 +1,8 @@
 import React from 'react';
-import { View,Text } from "react-native";
+import { FlatList, TouchableOpacity, View,Text } from "react-native";
 import { ListItem,Icon } from "react-native-elements";
 import {withSearch } from "../../../../utils/enhancers";
 import constants from '../../../../constants';
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { SearchItem, SearchState } from "../../../../types/Search";
 import { NavigationService } from "../../../../services";
 import _ from 'lodash'

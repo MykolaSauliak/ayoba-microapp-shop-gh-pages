@@ -9,17 +9,17 @@ import {
   SafeAreaView,
   ScrollView,
   ImageBackground,
+  TouchableOpacity
 } from 'react-native';
 import ProductListItem from '../../components/ProductListItem';
 import Loading from '../../components/Loading';
 import Button from '../../components/Button/Button';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import globalStyles from '../../constants/styles';
 import colors from '../../constants/colors';
 import BottomSheet from 'reanimated-bottom-sheet';
 import constants from '../../constants';
 import NumericInput from 'react-native-numeric-input';
-import {WebView} from 'react-native-webview';
+// import {WebView} from 'react-native-webview';
 import {Icon, Header, ListItem} from 'react-native-elements';
 import axios from 'axios';
 import {getTotalValue} from '../../features/cart/operations';

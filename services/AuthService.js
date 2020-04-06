@@ -4,8 +4,10 @@ import {setPhone} from '../features/user/actions';
  import 'firebase/firestore';
 import {setUser as saveUserToStore} from '../features/user/actions';
 import constants from '../constants';
+import Ayoba from './Ayoba';
 
 class AuthService {
+  
   store;
 
   constructor() {
@@ -20,17 +22,52 @@ class AuthService {
     if (!this.store) {
       this.store = store;
     }
+
+    // let phone = Ayoba.getPhone()
+    // if (phone) {
+    //       let name;
+    //       let last_name;
+    //       let bio;
+    //       let avatar = constants.DEFAULT_AVATAR;
+    //       let documentSnapshot;
+    //       try {
+    //         documentSnapshot = await usersRef.doc(phone).get();
+    //         if (documentSnapshot.exists) {
+    //           const data = documentSnapshot.data();
+    //           name = data.name;
+    //           last_name = data.last_name;
+    //           bio = data.bio;
+    //           avatar = data.avatar;
+  
+    //           await documentSnapshot.ref.update({
+    //             last_active: Date.now(),
+    //           });
+    //         }
+    //       } catch (err) {}
+    //       this.store.dispatch(
+    //         saveUserToStore({
+    //           name,
+    //           last_name,
+    //           avatar,
+    //           bio,
+    //           uid: user.uid,
+    //           email: user.email,
+    //         }),
+    //       );
+    //     } else {
+    //       this.store.dispatch(saveUserToStore(null));
+    //     }
   }
 
   removeListeners() {
-    if (this.unsubscribe) {
-      try {
-        this.unsubscribe();
-        this.unsubscribe = null;
-      } catch (err) {
-        console.log('ERROR DURING REMOVE LISTENERS -', err);
-      }
-    }
+    // if (this.unsubscribe) {
+    //   try {
+    //     this.unsubscribe();
+    //     this.unsubscribe = null;
+    //   } catch (err) {
+    //     console.log('ERROR DURING REMOVE LISTENERS -', err);
+    //   }
+    // }
   }
 
   setListener() {

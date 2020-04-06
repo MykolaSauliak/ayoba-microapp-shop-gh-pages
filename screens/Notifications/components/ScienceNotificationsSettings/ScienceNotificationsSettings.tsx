@@ -4,7 +4,8 @@ import {
     Text,
     ScrollView,
     StyleSheet,
-    Platform
+    Platform,
+    TouchableOpacity
 } from "react-native";
 import { 
     CheckBox,
@@ -13,7 +14,6 @@ import {
  } from "react-native-elements";
 import HorrorBackground from '../../../../components/HorrorImageBackground'
 import { globalStyles } from '../../../../constants';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import constants from '../../constants';
 import S from '../../styles';
 import DateTimePicker  from '@react-native-community/datetimepicker';

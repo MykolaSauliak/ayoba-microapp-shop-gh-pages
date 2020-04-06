@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {FlatList, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import { ListItem } from "react-native-elements";
 import { NavigationService } from "../../services"
@@ -18,7 +18,6 @@ const searchClient = algoliasearch(
 
 import {withSearch} from '../../utils/enhancers'
 import { setSearchState } from '../../features/search/actions';
-import { FlatList } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   container: {

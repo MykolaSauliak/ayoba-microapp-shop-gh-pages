@@ -1,10 +1,9 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {ScrollView, View, Text} from 'react-native';
 import {Image} from 'react-native-elements';
 import HorrorBackHeader from '../../../../components/HorrorBackHeader';
 import HorrorImageBackground from '../../../../components/HorrorImageBackground';
 import HorrorText from '../../../../components/HorrorText';
-import {ScrollView} from 'react-native-gesture-handler';
 
 const NotificationInfo = ({image, title, description}) => {
   // console.log('render info')

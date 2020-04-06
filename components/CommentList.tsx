@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { 
     View,
     Text,
-    FlatList
+    FlatList,
+    TouchableOpacity,
+    ScrollView
  } from "react-native";
 import CommentCard from "../containers/CommentCard";
 import T from 'prop-types'
@@ -13,7 +15,6 @@ import Button from './Button/Button';
 import Modal from "react-native-modal";
 import { BackHeader } from '.';
 import { Comment } from '../types/Comment.type';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import constants from '../constants';
 import _ from 'lodash'
 

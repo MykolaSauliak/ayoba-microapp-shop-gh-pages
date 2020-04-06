@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
   Alert,
+  ScrollView
 } from 'react-native';
 import globalStyles from '../../constants/styles';
 import colors from '../../constants/colors';
@@ -19,7 +20,6 @@ import constants from '../../constants';
 import {PaymentMethod, Review, ChooseCard} from './components';
 import {StripeService, NavigationService} from '../../services';
 import Modal from 'react-native-modal';
-import {ScrollView} from 'react-native-gesture-handler';
 
 // import {
 //     ButtonGroup

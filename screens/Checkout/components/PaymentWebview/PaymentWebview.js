@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, Image} from 'react-native';
-import {WebView} from 'react-native-webview';
+// import {WebView} from 'react-native-webview';
 import {NavigationService} from '../../../../services';
 const myHtmlFile = require('./index.html');
 
@@ -56,20 +56,21 @@ export default class PaymentModal extends Component {
         `;
 
     return (
-      <WebView
-        // source={myHtmlFile}
-        ref={webView => (this.webView = webView)}
-        source={{uri: 'file:///android_asset/stripe.html'}}
-        style={{flex: 1}}
-        onMessage={this.handleEvent}
-        onError={error => console.log(error)}
-        startInLoadingState={true}
-        // cacheEnabled={false}
-        // injectedJavaScript={runFirst}
-        // javaScriptEnabled={true}
-        // allowsLinkPreview={false}
-        originWhitelist={['*']}
-      />
+      null
+      // <WebView
+      //   // source={myHtmlFile}
+      //   ref={webView => (this.webView = webView)}
+      //   source={{uri: 'file:///android_asset/stripe.html'}}
+      //   style={{flex: 1}}
+      //   onMessage={this.handleEvent}
+      //   onError={error => console.log(error)}
+      //   startInLoadingState={true}
+      //   // cacheEnabled={false}
+      //   // injectedJavaScript={runFirst}
+      //   // javaScriptEnabled={true}
+      //   // allowsLinkPreview={false}
+      //   originWhitelist={['*']}
+      // />
     );
   }
 }

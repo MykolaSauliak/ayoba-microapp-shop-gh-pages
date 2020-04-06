@@ -5,13 +5,13 @@ import {
   Modal,
   Text,
   TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {InstantSearch} from 'react-instantsearch-native';
 import RefinementList from '../containers/Search/RefinementList';
 import {BackHeader} from '../components';
 import AlgoliaPriceFilter from '../components/AlgoliaPriceFilter';
-import {ScrollView} from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   closeButton: {

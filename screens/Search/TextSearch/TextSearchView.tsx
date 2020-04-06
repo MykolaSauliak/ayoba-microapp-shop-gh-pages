@@ -5,6 +5,7 @@ import {
   Dimensions,
   StyleSheet,
   TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Header, SearchBar, ListItem, Button} from 'react-native-elements';
@@ -26,7 +27,6 @@ import ToggleRefinement from '../../../containers/Search/ToggleRefinement';
 import SortBy from '../../../containers/Search/SortBy';
 import RangeSlider from '../../../containers/Search/RangeSlider';
 import InfiniteGridHits from '../../../containers/Search/InfiniteGridHits';
-import { ScrollView } from 'react-native-gesture-handler';
 import { FilterSortButton } from '../../../containers/Search';
 import RemoveAllAtUnmount from '../../../containers/Search/RemoveAll';
 import LoadingListener from '../../../containers/Search/LoadingListener';

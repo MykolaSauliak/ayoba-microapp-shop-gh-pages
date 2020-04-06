@@ -7,7 +7,14 @@ import colors from '../constants/colors';
 import constants from '../constants';
 import toTimestamp from '../utils/getDiscountEndTs';
 import T from 'prop-types';
-import ImagePicker from 'react-native-image-crop-picker';
+// import ImagePicker from 'react-native-image-crop-picker';
+import * as DocumentPicker from 'expo-document-picker';
+
+type ImageType = {
+  filename: string,
+  path : string,
+  size : number,
+}
 
 const S = StyleSheet.create({
   title: {
@@ -82,25 +89,48 @@ const ImagePickerRow = ({
   };
 
   const uploadPictures = () => {
-    ImagePicker.openPicker({
-      multiple: true,
-      // includeBase64: true
-    }).then(imgs => {
-      setImages([...images, ...imgs]);
-      // console.log(images);
-    });
+    DocumentPicker
+    .getDocumentAsync({
+      type: "image/*",
+      multiple: true
+    })
+    .then(imgs => {
+          setImages([...images, ...imgs]);
+          // console.log(images);
+      }
+    )
+    // ImagePicker.openPicker({
+    //   multiple: true,
+    //   // includeBase64: true
+    // }).then(imgs => {
+    //   setImages([...images, ...imgs]);
+    //   // console.log(images);
+    // });
   };
 
   const uploadPicture = () => {
-    ImagePicker.openPicker({
-      // includeBase64: true
-    }).then(image => {
-      setImage(image);
-      // console.log(image);
-      if (onImageUpload) {
-        onImageUpload(image);
-      }
-    });
+    DocumentPicker
+    .getDocumentAsync({
+      type: "image/*",
+    })
+    .then( image => {
+        image.filename = image.name
+        image.path = image.uri
+        setImage(image);
+        // console.log(image);
+        if (onImageUpload) {
+          onImageUpload(image);
+        }
+    })
+    // ImagePicker.openPicker({
+    //   // includeBase64: true
+    // }).then(image => {
+    //   setImage(image);
+    //   // console.log(image);
+    //   if (onImageUpload) {
+    //     onImageUpload(image);
+    //   }
+    // });
     // ImagePicker.showImagePicker(options, (response) => {
     //     // console.log('Response = ', response);
 

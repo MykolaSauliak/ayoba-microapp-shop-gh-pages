@@ -7,7 +7,7 @@ import {
     Image,
     StyleSheet
 } from "react-native";
-import ImagePicker from 'react-native-image-crop-picker';
+// import ImagePicker from 'react-native-image-crop-picker';
 import { AuthService } from "../services";
 import { withAuth } from "../utils/enhancers";
 
@@ -38,17 +38,17 @@ let AvatarUpload = ({
     let [avatarLoading, setAvatarLoading] = React.useState(false)
 
     const onAvatarPress = () => {
-        ImagePicker
-        .openPicker({})
-        .then(async image => {
-          console.log('image',image)
-          setAvatarLoading(true)
-          let newUrl = await AuthService.changeAvatar(image.path)
-          changeAvatar(newUrl)
-          setAvatarLoading(false)
-          // setImages([...images, ...imgs]);
-          // console.log(images);
-        });
+        // ImagePicker
+        // .openPicker({})
+        // .then(async image => {
+        //   console.log('image',image)
+        //   setAvatarLoading(true)
+        //   let newUrl = await AuthService.changeAvatar(image.path)
+        //   changeAvatar(newUrl)
+        //   setAvatarLoading(false)
+        //   // setImages([...images, ...imgs]);
+        //   // console.log(images);
+        // });
     }
 
     return (

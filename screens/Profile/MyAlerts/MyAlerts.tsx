@@ -15,7 +15,6 @@ import { TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import PriceReductionAlert from "./components/PriceReductionAlert/PriceReductionAlertContainer";
 import FollowingAlert from "./components/FollowingAlert/FollowingAlertContainer";
 import { BackHeader } from '../../../components';
-import {  ScrollView } from 'react-native-gesture-handler'
 
 const FirstRoute = () => (
   <PriceReductionAlert />

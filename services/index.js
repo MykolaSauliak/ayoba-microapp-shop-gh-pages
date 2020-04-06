@@ -9,6 +9,7 @@ import AppStateService from './AppStateService';
 import SentryIoService from './SentryIoService';
 import PaypalService from './PaypalService';
 import FirebaseService from './FirebaseService';
+import Ayoba from './Ayoba';
 // import StripeService from './StripeService';
 
 export {
@@ -22,6 +23,7 @@ export {
   AppStateService,
   SentryIoService,
   PaypalService,
-  FirebaseService
+  FirebaseService,
+  Ayoba,
   // StripeService,
 };

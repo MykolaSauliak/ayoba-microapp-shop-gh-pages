@@ -9,6 +9,8 @@ import ClothesSearchHeader from '../components/ClothesSearchHeader';
 import BackHeader from '../components/BackHeader';
 import screens from '../constants/screens';
 import colors from '../constants/colors';
+import {Ionicons} from '@expo/vector-icons'
+import {defaultNavigationOptions} from './NavigationOptions';
 
 const CartStack = createStackNavigator({
   [screens.Cart]: {
@@ -17,12 +19,12 @@ const CartStack = createStackNavigator({
       header: null,
     },
   },
-  [screens.PaypalModal]: {
-    screen: PaypalModal,
-    navigationOptions: {
-      title: 'Paypal',
-    },
-  },
+  // [screens.PaypalModal]: {
+  //   screen: PaypalModal,
+  //   navigationOptions: {
+  //     title: 'Paypal',
+  //   },
+  // },
   [screens.Checkout]: {
     screen: Checkout,
     navigationOptions: {
@@ -35,6 +37,27 @@ const CartStack = createStackNavigator({
   //     title: 'Pay',
   //   },
   // },
-});
+},{
+    initialRouteKey: screens.Cart,
+    headerMode: 'screen',
+    defaultNavigationOptions,
+    navigationOptions: {
+      tabBarIcon: ({focused, tintColor}) => {
+        const iconName = focused ? 'home' : 'home-outline';
+        return (
+          <Ionicons
+            name={iconName}
+            size={25}
+            color={tintColor}
+          />
+        );
+      },
+      // title: i18n.t('tabs.home'),
+      title: "Buy",
+      header: null,
+    }
+  }
+);
+
 
 export default CartStack;

@@ -3,6 +3,7 @@ import T from 'prop-types';
 import { 
     View, 
     Image,
+    TouchableOpacity
 } from "react-native";
 import { Container, 
     Header, 
@@ -24,7 +25,6 @@ import {
 } from 'react-native-elements'
 import { Rating, AirbnbRating } from 'react-native-ratings';
 import moment from 'moment';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import ErrorBoundary from '../components/ErrorBoundary'
 import colors from '../constants/colors';
 import constants from '../constants';

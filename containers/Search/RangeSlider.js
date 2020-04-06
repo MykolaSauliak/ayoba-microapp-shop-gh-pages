@@ -2,9 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {connectRange} from 'react-instantsearch-native';
 import {View, Text, Button, StyleSheet} from 'react-native';
 import {Input} from 'react-native-elements';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 // import Slider from '@react-native-community/slider';
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
+// import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 const styles = StyleSheet.create({
   container: {
@@ -100,7 +99,7 @@ const RangeSlider = ({
             max: {nonCollidingMultiSliderValue[1]}
           </Text>
         </View>
-        <MultiSlider
+        {/* <MultiSlider
           values={[
             nonCollidingMultiSliderValue[0],
             nonCollidingMultiSliderValue[1],
@@ -115,7 +114,7 @@ const RangeSlider = ({
           minMarkerOverlapDistance={40}
           // customMarker={CustomMarker}
           // customLabel={CustomLabel}
-        />
+        /> */}
         {/* <View style={{flex:0.5}}>
               <Input onChange={(value) => {
                      && setMin(Number(value));
