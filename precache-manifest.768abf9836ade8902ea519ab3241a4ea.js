@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/ayoba-microapp-shop-gh-pages/static/media/la.b55ba28d.png"
   },
   {
-    "revision": "bb6d253f67f60a9bcd73",
-    "url": "/ayoba-microapp-shop-gh-pages/static/js/app.adc3724b.chunk.js"
+    "revision": "0b102ff61ca001c5e732",
+    "url": "/ayoba-microapp-shop-gh-pages/static/js/app.bf956707.chunk.js"
   },
   {
-    "revision": "218f0588e5508b6b6ab47c509d02b03a",
-    "url": "/ayoba-microapp-shop-gh-pages/static/js/app.adc3724b.chunk.js.gz"
+    "revision": "f7183f4242a7da51b2d08f8394c869af",
+    "url": "/ayoba-microapp-shop-gh-pages/static/js/app.bf956707.chunk.js.gz"
   },
   {
     "revision": "ba6d62f8ac1fb5327ebdbbcde5de7859",
@@ -912,12 +912,12 @@ self.__precacheManifest = [
     "url": "/ayoba-microapp-shop-gh-pages/serve.json"
   },
   {
-    "revision": "7a7bc7ead25db795e58b336f04d2624c",
-    "url": "/ayoba-microapp-shop-gh-pages/favicon.ico"
-  },
-  {
     "revision": "48c7ed4e7da9792af288a60d7242d615",
     "url": "/ayoba-microapp-shop-gh-pages/expo-service-worker.js"
+  },
+  {
+    "revision": "7a7bc7ead25db795e58b336f04d2624c",
+    "url": "/ayoba-microapp-shop-gh-pages/favicon.ico"
   },
   {
     "revision": "cd10a8b11e8aa0ed49f37b3ac6555285",
@@ -984,7 +984,7 @@ self.__precacheManifest = [
     "url": "/ayoba-microapp-shop-gh-pages/apple/splash/icon_828x1792.png"
   },
   {
-    "revision": "3faddd8b3dd71d50f7c0a26ec01ab423",
+    "revision": "636cb9bc5381cceb63eb0729137e9e61",
     "url": "/ayoba-microapp-shop-gh-pages/index.html"
   },
   {
