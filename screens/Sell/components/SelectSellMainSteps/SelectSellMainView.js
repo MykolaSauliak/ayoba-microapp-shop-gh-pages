@@ -41,12 +41,12 @@ const SelectSellMainView = ({
   color,
   printed,
 
-  photos,
-  photo1,
-  photo2,
-  photo3,
-  photo4,
-  photo5,
+  photos = [],
+  photo1 = {},
+  photo2 = {},
+  photo3 = {},
+  photo4 = {},
+  photo5 = {},
 
   description,
   measurements,
@@ -212,7 +212,7 @@ const SelectSellMainView = ({
       express_delivery: false,
 
       seller,
-      shipping_country: seller.shipping_country,
+      shipping_country: seller?.shipping_country,
     });
     if (succesfull) {
       NavigationService.navigateToDrafts();
@@ -332,9 +332,9 @@ const SelectSellMainView = ({
             onPress={goToSellerSelect}
           />
           <ListItem
-            containerStyle={{backgroundColor: colors.lightGray}}
-            disabled
-          />
+              containerStyle={{backgroundColor: colors.lightGray}}
+              disabled
+            />
           {/* <ListItem
                     // leftElement={<View>
                     //         <Text style={S.number}></Text>

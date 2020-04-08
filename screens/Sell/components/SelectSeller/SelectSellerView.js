@@ -74,7 +74,7 @@ const SelectSellerView = ({
     onDone();
   };
 
-  const addressomplete = () => {
+  const addresscomplete = () => {
     return (
       (address != null &&
         address.title != null &&
@@ -143,10 +143,8 @@ const SelectSellerView = ({
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Text>{country ? country.name : ''}</Text>
             <CountryPicker
-              {...{
-                countryCode,
-                onSelect,
-              }}
+                countryCode={countryCode}
+                onSelect={onSelect}
               // visible={}
             />
           </View>
@@ -160,13 +158,14 @@ const SelectSellerView = ({
         rightElement={
           <View
             style={{alignItems: 'center', width: '50%', flexDirection: 'row'}}>
-            <PhoneInput
+            {/* <PhoneInput
               ref={phoneInput}
               style={{width: '25%'}}
               value={phoneCode}
               onSelectCountry={phonecountry => setPhoneCountry(phonecountry)}
               onChangePhoneNumber={code => setPhoneCode(code)}
-            />
+            /> */}
+            {/* <Input value/> */}
             <Text>{getCountryCode()}</Text>
             <TextInput
               style={{
@@ -186,7 +185,7 @@ const SelectSellerView = ({
         title="Personal Contact Information"
         rightElement={
           <View style={{}}>
-            <Text>{addressomplete() ? 'saved' : ''}</Text>
+            <Text>{addresscomplete() ? 'saved' : ''}</Text>
           </View>
         }
         bottomDivider

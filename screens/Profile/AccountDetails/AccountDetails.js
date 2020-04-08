@@ -63,6 +63,7 @@ const AccountDetails = ({
                   name: loggedInUser.name,
                   last_name: loggedInUser.last_name,
                   bio: loggedInUser.bio,
+                  phone: loggedInUser.phone,
                 }}
                 onSubmit={async values => {
                   console.log('values', values);
@@ -95,6 +96,14 @@ const AccountDetails = ({
                       label="Biography"
                       onChangeText={handleChange('bio')}
                       value={values.bio}
+                    />
+                    <Input
+                      inputContainerStyle={{color: 'black'}}
+                      labelStyle={{fontSize: 12, color: 'black'}}
+                      containerStyle={{marginBottom: 10}}
+                      label="Phone"
+                      value={values.phone}
+                      disabled
                     />
                     <Input
                       inputContainerStyle={{color: 'black'}}

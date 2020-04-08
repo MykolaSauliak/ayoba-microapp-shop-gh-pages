@@ -30,6 +30,8 @@ import {
   Text,
 } from 'native-base';
 import {SharedElement} from 'react-native-motion';
+import ErrorBoundary from './ErrorBoundary';
+import R from 'ramda'
 
 const S = StyleSheet.create({
   cartBtn: {
@@ -185,6 +187,7 @@ const ProductCard = ({
   };
   // console.log('images ? images[0].src : ',images)
   return (
+    <ErrorBoundary>
     <Card
       style={[
         {
@@ -242,13 +245,15 @@ const ProductCard = ({
         </Right>
       </CardItem>
       <TouchableOpacity style={{marginTop: 30}} onPress={() => onPress(item)}>
-        <CardItem cardBody>
-          <Image
-            source={{uri: images ? images[0].src : ''}}
-            style={{height: 150, width: null, flex: 1}}
-            resizeMode="contain"
-          />
-        </CardItem>
+        <ErrorBoundary>
+          <CardItem cardBody>
+            <Image
+              source={{uri: images && images[0] && images[0].src }}
+              style={{height: 150, width: null, flex: 1}}
+              resizeMode="contain"
+            />
+          </CardItem>
+        </ErrorBoundary>
         <CardItem>
           <View
             style={{width: '100%', alignItems: 'flex-start', minHeight: 90}}>
@@ -281,7 +286,7 @@ const ProductCard = ({
         </CardItem>
       </TouchableOpacity>
     </Card>
-
+    </ErrorBoundary>
     // <Card
     //   containerStyle={{margin: 4, flex:0.5}}
     //   // image={{uri: images ? images[0].src : ''}}

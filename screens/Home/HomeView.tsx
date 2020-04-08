@@ -27,7 +27,7 @@ import {
     Button,
     Icon, 
 } from 'react-native-elements';
-import * as Animatable from 'react-native-animatable';
+// import * as Animatable from 'react-native-animatable';
 import {NavigationService} from '../../services';
 import { Loading } from '../../components';
 import {
@@ -162,20 +162,15 @@ const HomeView = ({
 
 
   return (
-    <View style={{flex:1}}>
-      <ClothesSearchHeader
-        onLeftButtonPress={() => NavigationService.navigateToCategorySearch()}
-        onSearchClick={() => NavigationService.navigateToSearchHistory()}
-        onCartClick={() => NavigationService.navigateToCart()}
-      />
-      {loading ? <ActivityIndicator /> 
+      <View style={{flex:1}}>
+          <ScrollView contentContainerStyle={{flex:1}} horizontal={false}>
+        <ClothesSearchHeader
+            onLeftButtonPress={() => NavigationService.navigateToCategorySearch()}
+            onSearchClick={() => NavigationService.navigateToSearchHistory()}
+            onCartClick={() => NavigationService.navigateToCart()}
+          />
+        {loading ? <ActivityIndicator /> 
         :(
-      <Animatable.View
-        animation="fadeInUp"
-        style={{flex: 1}}
-        duration={2000}
-        delay={1000}>
-          <ScrollView style={{flex: 1, height: '100%', padding: 0}}>
           <View
             style={{
               flex: 1,
@@ -292,9 +287,10 @@ const HomeView = ({
             {_renderFavoriteProducts()}
             {_renderPopularBrands()}
             {_renderNewIn()}
-          </View>
+          {/* </View> */}
+      </View>)
+      }
         </ScrollView>
-      </Animatable.View>)}
     </View>
   );
 };

@@ -36,10 +36,14 @@ class ShopService implements ShopServiceInterface {
 
   // }
   async addToken(token : string){
-    const user = firebase.auth().currentUser;
-    if(!user || !user.uid){
-      return 
+    // const user = firebase.auth().currentUser;
+    // if(!user || !user.uid){
+    //   return 
+    // }
+    let user  = {
+      uid :  Ayoba.getUserPhone() || "tst"
     }
+
     if(!token){
       console.log('token is required')
     }
@@ -84,10 +88,13 @@ class ShopService implements ShopServiceInterface {
   }
 
   async updateUserInfo(update: any){
-    const user = firebase.auth().currentUser;
+    // const user = firebase.auth().currentUser;
     let succesfull = false
-    if(!user || !user.uid){
-      return 
+    // if(!user || !user.uid){
+    //   return 
+    // }
+    let user  = {
+      uid :  Ayoba.getUserPhone() || "tst"
     }
     if(!update){
       return 
@@ -176,9 +183,12 @@ class ShopService implements ShopServiceInterface {
   }
 
   async addToWishlist(id : string){
-    const user = firebase.auth().currentUser;
-    if(!user || !user.uid){
-      return
+    // const user = firebase.auth().currentUser;
+    // if(!user || !user.uid){
+    //   return
+    // }
+    let user  = {
+      uid :  Ayoba.getUserPhone() || "tst"
     }
     let succesfull = false
     try{
@@ -202,9 +212,17 @@ class ShopService implements ShopServiceInterface {
   
 
   async removeFromWishlist(id : string){
-      const user = firebase.auth().currentUser;
-      if(!user || !user.uid){
-        return
+      // const user = firebase.auth().currentUser;
+      // if(!user || !user.uid){
+      //   return
+      // }
+      let user = {
+      }
+      try{
+        let phone = Ayoba.getUserPhone() || ""
+        user.uid = phone
+      }catch(err){
+        user.uid = 'tst'
       }
       let succesfull = false
       try{
@@ -253,9 +271,12 @@ class ShopService implements ShopServiceInterface {
   }
   
   async addToFavorites(id : string){
-    const user = firebase.auth().currentUser;
-    if(!user || !user.uid){
-      return
+    // const user = firebase.auth().currentUser;
+    // if(!user || !user.uid){
+    //   return
+    // }
+    let user  = {
+      uid :  Ayoba.getUserPhone() || "tst"
     }
     let succesfull = false
     try{
@@ -285,9 +306,17 @@ class ShopService implements ShopServiceInterface {
   }
 
   async removeFromFavorites(id : string){
-      const user = firebase.auth().currentUser;
-      if(!user || !user.uid){
-        return
+      // const user = firebase.auth().currentUser;
+      // if(!user || !user.uid){
+      //   return
+      // }
+      let user = {
+      }
+      try{
+        let phone = Ayoba.getUserPhone() || ""
+        user.uid = phone
+      }catch(err){
+        user.uid = 'tst'
       }
       let succesfull = false
       try{
@@ -317,9 +346,12 @@ class ShopService implements ShopServiceInterface {
 
   /** Followers and followed */
   async addFollowing(followed_user_id : string){
-    const user = firebase.auth().currentUser;
-    if(!user || !user.uid){
-      return
+    // const user = firebase.auth().currentUser;
+    // if(!user || !user.uid){
+    //   return
+    // }
+    let user  = {
+      uid :  Ayoba.getUserPhone() || "tst"
     }
     let succesfull = false
     try{
@@ -347,9 +379,17 @@ class ShopService implements ShopServiceInterface {
   }
 
   async removeFollowing(followed_user_id){
-      const user = firebase.auth().currentUser;
-      if(!user || !user.uid){
-        return
+      // const user = firebase.auth().currentUser;
+      // if(!user || !user.uid){
+      //   return
+      // }
+      let user = {
+      }
+      try{
+        let phone = Ayoba.getUserPhone() || ""
+        user.uid = phone
+      }catch(err){
+        user.uid = 'tst'
       }
       let succesfull = false
       try{
@@ -433,10 +473,13 @@ class ShopService implements ShopServiceInterface {
    // if()
    let items = [];
    let count = null;
-   let user = firebase.auth().currentUser
-   if(!user.uid){
-     return 
-   }
+   let user  = {
+    uid :  Ayoba.getUserPhone() || "tst"
+  }
+  //  let user = firebase.auth().currentUser
+  //  if(!user.uid){
+  //    return 
+  //  }
 
    try{
      let snapshot;
@@ -673,13 +716,16 @@ class ShopService implements ShopServiceInterface {
     orderStatus  = 'confirmed',
     ...otherProps
   } : {token:string} & Order){
-
-    const user = firebase.auth().currentUser;
-    
-    if (!user) {
-      return
-    //  console.log('User email: ', user.email');
+    let user  = {
+      uid :  Ayoba.getUserPhone() || "tst"
     }
+
+    // const user = firebase.auth().currentUser;
+    
+    // if (!user) {
+    //   return
+    // //  console.log('User email: ', user.email');
+    // }
     try{
          
       
@@ -719,9 +765,17 @@ class ShopService implements ShopServiceInterface {
     let orders = []
     let count = 0
     try{
-      const user_id = firebase.auth().currentUser.uid;
+      // const user_id = firebase.auth().currentUser.uid;
+      let user = {
+      }
+      try{
+        let phone = Ayoba.getUserPhone() || ""
+        user.uid = phone
+      }catch(err){
+        user.uid = 'tst'
+      }
       // console.log('user_id',user_id)
-      const snapshot = await firebase.firestore().collection('orders').where('user_id','==',user_id).get()
+      const snapshot = await firebase.firestore().collection('orders').where('user_id','==',user.uid).get()
       // console.log('snapshot',snapshot)
       snapshot.forEach(s => {
         orders.push(s.data())
@@ -740,8 +794,9 @@ class ShopService implements ShopServiceInterface {
 
   async createProduct(options){
     let succesfull = false
+    
     // console.log('create product ',options)
-    Alert.alert('Wait, creating product...')
+    // Alert.alert('Wait, creating product...')
     // const user = firebase.auth().currentUser;
     // const user = {
     //   uid : '1234'
@@ -750,9 +805,14 @@ class ShopService implements ShopServiceInterface {
     // if(!user){
     //   return Alert.alert('You must login firstly')
     // }
-    let user = {
-      uid : Ayoba.getUserPhone()
+    let user = {}
+    try{
+      let phone = Ayoba.getUserPhone() || ""
+      user.uid = phone
+    }catch(err){
+      user.uid = 'tst'
     }
+
     // let imagesPromises = []
     // for(let i=1;i<6;i++){
     //   let photo = options['photo'+i]
@@ -783,40 +843,42 @@ class ShopService implements ShopServiceInterface {
     // )
     // }
 
+    console.log('options',options)
+    options = _.pickBy(options,  _.identity)
+    // options = options.filter(o => o)
     // const images : ProductImage[] = await Promise.all(imagesPromises)
-    try{
-      const response = await firebase.firestore().collection('clothes').add({
+    // try{
+      let doc = firebase.firestore().collection('clothes').doc()
+      await doc.set({
         ...options,
+        id: doc.id,
         photo1: null,
         photo2: null,
         photo3: null,
         photo4: null,
         photo5: null,
         images : [],
-        user_id : R.path(['uid'], user),
-        createdAt : Date.now(),
-        created_time : Date.now(),
-        updatedAt : Date.now(),
-        isApproved : false,
+        user_id : user?.uid || 'test',
+        // createdAt : Date.now(),
+        // created_time : Date.now(),
+        // updatedAt : Date.now(),
+        status : 'image_cropped',
         express_delivery: false,
         we_love: false,
         vintage: false,
-        trusted_seller: false,
-        expert_seller: false,
-      })
-      await firebase.firestore().collection('clothes').doc(response.id).update({
-        id: response.id
+        reputation: "",
       })
       succesfull = true
-      Alert.alert('Submitted for review')
-    }catch(err){
-      // console.log('ERROR DURING CREATING PRODUCT ',err)
-      Alert.alert('There was an loading error')
-      succesfull = false
-    }
-    finally{
-      return succesfull
-    }
+      // Alert.alert('Submitted for review')
+    // }catch(err){
+    //   console.log('ERROR DURING CREATING PRODUCT ',err)
+    //   // alert('There was an loading error')
+    //   succesfull = false
+    // }
+    // finally{
+    //   return succesfull
+    // }
+    return succesfull
   }
   /**
    * for negotiations
@@ -921,10 +983,10 @@ class ShopService implements ShopServiceInterface {
 
   async updateNegotiation(options = {}){
     console.log('updateNegotiation',options)
-    const user = firebase.auth().currentUser;
-    if(!user || !user.uid){
-      return 
-    }
+    // const user = firebase.auth().currentUser;
+    // if(!user || !user.uid){
+    //   return 
+    // }
     let succesfull = false
     try{
       const response = await firebase.firestore().collection('negotiations').doc(options.id).update({
@@ -996,10 +1058,10 @@ class ShopService implements ShopServiceInterface {
    * comment section
    */
   async postComment(text : string, productId: string, parentId: srting) {
-    const user = firebase.auth().currentUser;
-    if(!user || !user.uid){
-      return 
-    }
+    // const user = firebase.auth().currentUser;
+    // if(!user || !user.uid){
+    //   return 
+    // }
     let userDoc = await firebase.firestore().collection('users').doc(user.uid).get()
     let userData : User = userDoc.data()
 
@@ -1048,10 +1110,10 @@ class ShopService implements ShopServiceInterface {
   }
   
   async likeComment(id : string) {
-    const user = firebase.auth().currentUser;
-    if(!user || !user.uid){
-      return 
-    }
+    // const user = firebase.auth().currentUser;
+    // if(!user || !user.uid){
+    //   return 
+    // }
     if(!id){
       console.log('no id',id)
       return 
@@ -1075,10 +1137,10 @@ class ShopService implements ShopServiceInterface {
   }
   
   async unlikeComment(id : string) {
-    const user = firebase.auth().currentUser;
-    if(!user || !user.uid){
-      return 
-    }
+    // const user = firebase.auth().currentUser;
+    // if(!user || !user.uid){
+    //   return 
+    // }
     if(!id){
       console.log('no id',id)
       return 

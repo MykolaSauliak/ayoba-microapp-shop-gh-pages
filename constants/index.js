@@ -55,6 +55,8 @@ export default {
     isApproved: 'isApproved',
   },
 
+  DEFAULT_IMAGE: "https://via.placeholder.com/200x200.png?text=no+image",
+
   publishedAtFormat: 'DD MMMM YYYY',
   updatedAtFormat: 'DD MMMM YYYY',
 };

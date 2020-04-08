@@ -123,6 +123,9 @@ const ProductInfoView = ({
 
   // let comments = getComments(id)
 
+  let bottomBtnHeight = constants.DEVICE_HEIGHT  * 0.1
+  bottomBtnHeight = bottomBtnHeight < 100 ? bottomBtnHeight : 100
+
   if(!AUTHENTICATION_FEES){
     AUTHENTICATION_FEES = (price * 0.1).toFixed(2)
   }
@@ -186,28 +189,6 @@ const ProductInfoView = ({
     );
   }
 
-  // const renderForeground = () => {
-  //     // const { scroll } = this.state
-  //     const titleOpacity = scroll.interpolate({
-  //       inputRange: [0, 106, 154],
-  //       outputRange: [1, 1, 0],
-  //       extrapolate: 'clamp'
-  //     })
-  // const translateY = scroll.interpolate({
-  //     inputRange: [0, 100, 200],
-  //     outputRange: [-50, -25,0],
-  //   //   extrapolate: 'clamp'
-  //   })
-  //     return (
-  //     //   <View style={styles.foreground}>
-  //         <Animated.View style={{ opacity: titleOpacity,}}>
-  //             <HeaderWithCart containerStyle={{...styles.headerWrapper, top: 0, height: 50, marginTop:0}}  title={title}/>
-  //             <Text style={styles.message}>Text</Text>
-  //         </Animated.View>
-  //     //   </View>
-  //     )
-  //   }
-
   const renderHeader = () => {
     // const opacity = scroll.interpolate({
     //   inputRange: [0, 160, 210],
@@ -234,7 +215,7 @@ const ProductInfoView = ({
   };
 
   const _renderBottomBtns = () => (
-    <View style={styles.btnRow}>
+    <View style={[styles.btnRow, {height: bottomBtnHeight}]}>
       <TouchableOpacity
         disabled={!isSignedIn}
         onPress={toNegotiation}
@@ -262,23 +243,24 @@ const ProductInfoView = ({
 
   return (
     <>
-      <ScrollView showsVerticalScrollIndicator={false} style={{flex: 0.8}}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{flex:1, marginBottom: bottomBtnHeight}}>
         {renderHeader()}
         <View style={{flex: 1, backgroundColor: colors.gray, paddingVertical: 15}}>
-              <GallerySwiper
-                images={imagesURI}
-                style={{height: constants.DEVICE_HEIGHT * 0.5}}
-                // Version *1.15.0 update
-                // onEndReached={() => {
-                //     // add more images when scroll reaches end
-                // }}
-                // Change this to render how many items before it.
-                // initialNumToRender={2}
-                // Turning this off will make it feel faster
-                // and prevent the scroller to slow down
-                // on fast swipes.
-                sensitiveScroll={false}
+            <GallerySwiper
+              images={imagesURI}
+              style={{height: constants.DEVICE_HEIGHT * 0.5}}
+              // Version *1.15.0 update
+              // onEndReached={() => {
+              //     // add more images when scroll reaches end
+              // }}
+              // Change this to render how many items before it.
+              // initialNumToRender={2}
+              // Turning this off will make it feel faster
+              // and prevent the scroller to slow down
+              // on fast swipes.
+              sensitiveScroll={false}
               />
+          <ScrollView>
           <View style={{paddingBottom: 50}}>
             <View style={{marginBottom: 5}}>
               <View
@@ -295,7 +277,6 @@ const ProductInfoView = ({
                   />
                 {favorite_count > 0 && <Text style={styles.favoriteCount}>{favorite_count}</Text>}
               </View>
-
               <View style={{flex: 0.7, marginTop: 20, paddingHorizontal}}>
                 {/* <SharedElement id="product_title"> */}
                   <Text style={[globalStyles.text, styles.productTitle]}>
@@ -509,25 +490,24 @@ const ProductInfoView = ({
 
 
 
-            <Suspense fallback={<Loading />}>
-                <DiscoverMoreProducts
-                    // key={'similar'}
-                    // key={similar_items.join(', ')}
-                    // key={lastUpdate}
-                    collection="clothes"
-                    onLoaded={() => setLastUpdate(Date.now())}
-                    containerStyle={{paddingHorizontal}}
-                    onPress={onProductPress}
-                    product_ids={similar_items}
-                    />  
-            </Suspense>
-
-
+            {/* <Suspense fallback={<Loading />}> */}
+            <DiscoverMoreProducts
+                // key={'similar'}
+                // key={similar_items.join(', ')}
+                // key={lastUpdate}
+                collection="clothes"
+                onLoaded={() => setLastUpdate(Date.now())}
+                containerStyle={{paddingHorizontal}}
+                onPress={onProductPress}
+                product_ids={similar_items}
+                />  
+            {/* </Suspense> */}
             <RecentlyViewed 
                 containerStyle={{paddingLeft: paddingHorizontal, paddingVertical: paddingHorizontal}}
                 onPress={onProductPress}
                 />
           </View>
+          </ScrollView>
         </View>
       </ScrollView>
       {_renderBottomBtns()}

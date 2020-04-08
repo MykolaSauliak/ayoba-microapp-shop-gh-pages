@@ -5,7 +5,7 @@ global.Ayoba = getAyoba()
  * proper javascript interface
  */
 function getAyoba() {
-    var userAgent = global.navigator.userAgent || global.navigator.vendor || window.opera;
+    var userAgent = global?.navigator?.userAgent || global?.navigator?.vendor || window?.opera ||  global?.opera || navigator?.userAgent || navigator?.vendor;
     
     // Windows Phone must come first because its UA also contains "Android"
     if (/windows phone/i.test(userAgent)) {
@@ -13,7 +13,8 @@ function getAyoba() {
     }
 
     if (/android/i.test(userAgent)) {
-        return global.Android;
+        // return Android;
+        return Android || global.Android || window?.Android;
     }
 
     // iOS detection from: http://stackoverflow.com/a/9039885/177710

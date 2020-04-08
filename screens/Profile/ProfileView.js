@@ -12,14 +12,14 @@ import {ListItem, CheckBox, Header} from 'react-native-elements';
 import colors from '../../constants/colors';
 import i18n from '../../i18n';
 import BottomSheet from 'reanimated-bottom-sheet';
-import {NavigationService} from '../../services';
+import {NavigationService, Ayoba} from '../../services';
 import {ActivityIndicator} from 'react-native-paper';
 import globalStyles from '../../constants/styles';
 import ShippingCartIcon from '../../containers/ShippingCartIcon';
 import AvatarUpload from '../../containers/AvatarUpload';
 // import { set } from 'ramda';
 
-let companyName = 'Vestiaire Collective'
+let companyName = 'This microapp'
 
 const S = StyleSheet.create({
   text: {
@@ -210,10 +210,20 @@ const ProfileView = ({
                     </Text>
                   </View>
                 ) : null} */}
-                <TouchableOpacity onPress={onLogout}>
+                {/* <TouchableOpacity onPress={onLogout}>
                   <Text>Log out</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
+            </View>
+          )}
+          {!isSignedIn && (
+            <View style={{flexDirection: 'row', marginTop: 15}}>
+              <Text style={S.text}>{i18n.t('profile.unlocktext')}</Text>
+              <TouchableOpacity onPress={() => Ayoba.checkLogin()}>
+                <Text style={[S.text, {color: colors.orange}]}>
+                  {i18n.t('profile.logintext')}
+                </Text>
+              </TouchableOpacity>
             </View>
           )}
           <View
@@ -409,16 +419,7 @@ const ProfileView = ({
             />
           </View>
           {/* end white block */}
-          {!isSignedIn && (
-            <View style={{flexDirection: 'row', marginTop: 15}}>
-              <Text style={S.text}>{i18n.t('profile.unlocktext')}</Text>
-              <TouchableOpacity onPress={toAuth}>
-                <Text style={[S.text, {color: colors.orange}]}>
-                  {i18n.t('profile.logintext')}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          )}
+
         </View>
       </ScrollView>
     </View>

@@ -1,4 +1,5 @@
 import {getAyoba} from '../libs/microapp'
+import {Alert} from 'react-native'
 import {setUser as saveUserToStore} from '../features/user/actions';
 import * as firebase from 'firebase';
 import 'firebase/firestore';
@@ -6,16 +7,107 @@ import _ from 'lodash';
 
 class Ayoba {
 
-    ayoba
+    static ayoba = null
 
     init = async (store) =>{
         let AyobaComponent = getAyoba()
         this.ayoba = AyobaComponent
-        // alert(JSON.stringify(AyobaComponent))
+        // Alert.alert(JSON.stringify(AyobaComponent))
         if (!this.store) {
             this.store = store;
         }
         
+        window.onProfileChanged = async (nickname, avatarPath) => {
+                let phone = this.getUserPhone()
+                let email;
+                let name = nickname;
+                let last_name;
+                let bio;
+                let avatar = avatarPath;
+                let documentSnapshot;
+                try {
+                    documentSnapshot = await firebase.firestore().collection('users').doc(phone).get();
+                    if (documentSnapshot.exists) {
+                        const data = documentSnapshot.data();
+                        name = data.name;
+                        email = data.email;
+                        last_name = data.last_name;
+                        bio = data.bio;
+                        avatar = data.avatar;
+                        await documentSnapshot.ref.update({
+                            last_active: Date.now(),
+                        });
+                    }
+                    else{
+                        await documentSnapshot.ref.set({
+                            name: nickname,
+                            avatar : avatarPath,
+                            phone: phone,
+                            uid: phone,
+                            last_active: Date.now(),
+                        }, {
+                            merge: true
+                        });
+                    }
+                } catch (err) {}
+                this.store.dispatch(
+                    saveUserToStore({
+                        name,
+                        last_name,
+                        avatar,
+                        bio,
+                        email,
+                        uid: phone,
+                        phone,
+                    }),
+                );
+        }
+
+        window.onPresenceChanged  = async (presence) => {
+            if(presence){
+                let phone = this.getUserPhone()
+                let email;
+                let name ;
+                let last_name;
+                let bio;
+                let avatar;
+                let documentSnapshot;
+                try {
+                    documentSnapshot = await firebase.firestore().collection('users').doc(phone).get();
+                    if (documentSnapshot.exists) {
+                        const data = documentSnapshot.data();
+                        name = data.name;
+                        email = data.email;
+                        last_name = data.last_name;
+                        bio = data.bio;
+                        avatar = data.avatar;
+                        await documentSnapshot.ref.update({
+                            last_active: Date.now(),
+                        });
+                    }
+                } catch (err) {}
+                this.store.dispatch(
+                    saveUserToStore({
+                        name,
+                        last_name,
+                        avatar,
+                        bio,
+                        email,
+                        uid: phone,
+                        phone,
+                    })
+                )
+            }
+        }
+
+        window.onLocationChanged = async (lat, lon) => {
+            
+        }
+
+        window.onLocationSentResponse = async (response) => {
+
+        }
+
         let phone = this.getUserPhone()
         if (phone) {
             let email;
@@ -39,26 +131,34 @@ class Ayoba {
                 }
             } catch (err) {}
             this.store.dispatch(
-            saveUserToStore({
-                name,
-                last_name,
-                avatar,
-                bio,
-                email,
-                uid: phone,
-            }),
+                saveUserToStore({
+                    name,
+                    last_name,
+                    avatar,
+                    bio,
+                    email,
+                    uid: phone,
+                    phone,
+                }),
             );
         } else {
             this.store.dispatch(saveUserToStore(null));
         }
 
-        global.onProfileChanged = async (nickname, avatarPath) => {
-            let phone = this.getUserPhone()
+    }
+
+    composeMessage(message){
+        this.ayoba?.composeMessage(message)
+    }
+
+    checkLogin = async () => {
+        let phone = this.getUserPhone()
+        if (phone) {
             let email;
-            let name = nickname;
+            let name;
             let last_name;
             let bio;
-            let avatar = avatarPath;
+            let avatar = constants.DEFAULT_AVATAR;
             let documentSnapshot;
             try {
                 documentSnapshot = await firebase.firestore().collection('users').doc(phone).get();
@@ -73,15 +173,6 @@ class Ayoba {
                         last_active: Date.now(),
                     });
                 }
-                else{
-                    await documentSnapshot.ref.set({
-                        name: nickname,
-                        avatar : avatarPath,
-                        last_active: Date.now(),
-                    }, {
-                        merge: true
-                    });
-                }
             } catch (err) {}
             this.store.dispatch(
                 saveUserToStore({
@@ -91,24 +182,27 @@ class Ayoba {
                     bio,
                     email,
                     uid: phone,
+                    phone,
                 }),
             );
-        }
-    }
-
-    composeMessage(message){
-        this.ayoba?.composeMessage(message)
+        } 
+        // else {
+            // this.store.dispatch(saveUserToStore(null));
+        // }
     }
 
     /**
      * @returns String: user’s ISO-3166 country code. Example: AF
      */
-    getCountry(){
+    getCountry = () => {
         return this.ayoba  && this.ayoba.getCountry()
     }
 
-    getUserPhone(){
-        return this.ayoba && this.ayoba.getMsisdn()
+    getUserPhone = () => {
+        if(!this.ayoba){
+            return getAyoba().getMsisdn()
+        }
+        return this.ayoba.getMsisdn()
     }
 
     sendMedia(url, mimeType){
@@ -120,7 +214,7 @@ class Ayoba {
      * of the chat screen
      * @params message
      */
-    sendMessage(message){
+    sendMessage = (message) => {
         this.ayoba?.sendMessage(message)
     }
 

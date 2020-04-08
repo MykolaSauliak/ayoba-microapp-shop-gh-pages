@@ -16,7 +16,6 @@ export default createStackNavigator(
   {
     initialRouteKey: screens.HomeScreen,
     // headerMode: 'screen',
-    defaultNavigationOptions,
     navigationOptions: {
       tabBarIcon: ({focused, tintColor}) => {
         const iconName = focused ? 'home' : 'home-outline';
@@ -31,6 +30,9 @@ export default createStackNavigator(
       // title: i18n.t('tabs.home'),
       title: "Home",
       header: null,
+    },
+    defaultNavigationOptions: {
+      header: null
     }
   },
 );

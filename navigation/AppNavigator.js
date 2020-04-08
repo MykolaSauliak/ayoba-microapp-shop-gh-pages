@@ -31,6 +31,9 @@ const switchNavigator = createStackNavigator(
     defaultNavigationOptions: props => ({
       header: null,
     }),
+    navigationOptions: {
+      header: null
+    }
   },
 );
 

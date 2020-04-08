@@ -11,8 +11,11 @@ import { Provider } from "react-redux";
 import FirebaseService from './services/FirebaseService'
 import { NavigationService, ShopService, Ayoba } from './services';
 import { getAyoba } from './libs/microapp';
+import Debug from './components/Debug';
+import * as Sentry from '@sentry/browser';
 
 FirebaseService.init()
+Sentry.init({dsn: "https://0a1c21c9af5a46619ee572ee7606fd3e@o275913.ingest.sentry.io/5191378"});
 
 const { store, persistor } = configureStore();
 
@@ -41,6 +44,7 @@ export default function App(props) {
             <Text>phone {getAyoba()?.getMsisdn()}</Text>
             <Text>phone from service {Ayoba.getUserPhone()}</Text> */}
             {/* <div><p>test</p></div> */}
+            <Debug />
             <AppNavigator 
               ref={(ref) => NavigationService.init(ref)}
               />

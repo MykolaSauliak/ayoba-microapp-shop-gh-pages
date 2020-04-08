@@ -112,7 +112,7 @@ const ProductListItem = ({
   // }
 
   const getImageURI = () => {
-    return (image && image.src) || (images && images[0].src);
+    return (image && image.src) || (images &&  images[0] && images[0].src);
   };
 
   const getDiscountPrice = (price, discount) => {
@@ -175,9 +175,10 @@ const ProductListItem = ({
             <CheckBox checked={checked} onPress={() => onCheckBoxClick(item)} />
           )}
           <Image
-            source={{
+            source={{ 
               uri: getImageURI(),
             }}
+            defaultSource={constants.DEFAULT_IMAGE}
             resizeMode="contain"
             style={{width: '100%', height: 75}}
           />
